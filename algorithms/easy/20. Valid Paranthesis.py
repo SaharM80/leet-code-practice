@@ -5,7 +5,6 @@
 # 2. Open brackets must be closed in the correct order.
 # 3. Every close bracket has a corresponding open bracket of the same type.
 
-
 def isValid(s: str) -> bool:
     pairs = {')':'(', ']':'[', '}':'{'}
     stack = []
@@ -13,10 +12,13 @@ def isValid(s: str) -> bool:
     for char in s:
         if char in pairs.values():
             stack.append(char)
-        elif stack and pairs[char] == stack[-1]:
-            stack.pop()
-    
-    return not stack
+        elif char in pairs.keys():
+            if stack and pairs[char] == stack[-1]:
+                stack.pop()
+            else:
+                return False
+
+    return not stack      
 
 print(isValid('{()}[]'))
 
