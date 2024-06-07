@@ -13,7 +13,7 @@ def isValid(s: str) -> bool:
     for char in s:
         if char in pairs.values():
             stack.append(char)
-        elif pairs[char] == stack[-1]:
+        elif stack and pairs[char] == stack[-1]:
             stack.pop()
     
     return not stack
